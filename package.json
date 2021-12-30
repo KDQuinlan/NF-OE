@@ -10,6 +10,8 @@
   "author": "Kane Longbottom <longbottomk@outlook.com>",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
     "@typescript-eslint/eslint-plugin": "^5.8.1",
     "@typescript-eslint/parser": "^5.8.1",
     "eslint": "^8.5.0",

@@ -1,34 +1,6 @@
-import { gql } from 'apollo-server-express';
+import { typeDefs as HealthCheckTypeDefs } from './TypeDefs/HealthCheck';
+import { typeDefs as RolesAndDepartmentsTypeDefs } from './TypeDefs/RolesAndDepartments';
 
-const typeDefs = gql`
-    #Types
-
-    type RolesAndDepartments {
-        id: ID!
-        Role: String!
-        DepartmentName: [String!]!
-    }
-
-    #Queries
-
-    type Query {
-        healthCheck: String!
-
-        getAllRoles: [RolesAndDepartments]
-    }
-
-    #Inputs
-
-    input RoleInput {
-        Role: String!
-        DepartmentName: [String!]!
-    }
-
-    #Mutations
-
-    type Mutation {
-        AddRoleAndDepartments(role: RoleInput): RolesAndDepartments
-    }
-`;
+const typeDefs = [HealthCheckTypeDefs, RolesAndDepartmentsTypeDefs];
 
 export default typeDefs;

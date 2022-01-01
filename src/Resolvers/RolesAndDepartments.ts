@@ -18,14 +18,15 @@ export const resolvers = {
             return role;
         },
         deleteRoleByRoleName: async (parent: any, args: any) => {
-            await RolesAndDepartments.findOneAndDelete({
+            return await RolesAndDepartments.findOneAndDelete({
                 Role: args.role,
             });
         },
         updateRoleByRoleName: async (parent: any, args: any) => {
-            return await RolesAndDepartments.updateOne(
+            return await RolesAndDepartments.findOneAndUpdate(
                 { Role: args.role },
                 { $set: { DepartmentName: args.departmentList } },
+                { new: true },
             );
         },
     },

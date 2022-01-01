@@ -27,7 +27,7 @@ export const typeDefs = gql`
 
     type Mutation {
         AddRoleAndDepartments(document: RoleInput): RolesAndDepartments
-        deleteRoleByRoleName(role: String): [RolesAndDepartments]
-        updateRoleByRoleName(role: String, departmentList: [String]): [RolesAndDepartments]
+        deleteRoleByRoleName(role: String): RolesAndDepartments
+        updateRoleByRoleName(role: String, departmentList: [String]): RolesAndDepartments
     }
 `;

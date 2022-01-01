@@ -11,11 +11,22 @@ export const resolvers = {
     },
     Mutation: {
         AddRoleAndDepartments: async (parent: any, args: any) => {
-            const { Role, DepartmentName } = args.role;
+            const { Role, DepartmentName } = args.document;
             const role = new RolesAndDepartments({ Role, DepartmentName });
             await role.save();
 
             return role;
+        },
+        deleteRoleByRoleName: async (parent: any, args: any) => {
+            await RolesAndDepartments.findOneAndDelete({
+                Role: args.role,
+            });
+        },
+        updateRoleByRoleName: async (parent: any, args: any) => {
+            return await RolesAndDepartments.updateOne(
+                { Role: args.role },
+                { $set: { DepartmentName: args.departmentList } },
+            );
         },
     },
 };

@@ -12,8 +12,8 @@ export const typeDefs = gql`
     #Queries
 
     type Query {
-        getAllRoles: [RolesAndDepartments]
-        getRoleDataByRoleName(role: String!): [RolesAndDepartments]
+        getAllRoles: [RolesAndDepartments!]!
+        getRoleDataByRoleName(role: String!): [RolesAndDepartments]!
     }
 
     #Inputs
@@ -26,6 +26,8 @@ export const typeDefs = gql`
     #Mutations
 
     type Mutation {
-        AddRoleAndDepartments(role: RoleInput): RolesAndDepartments
+        AddRoleAndDepartments(document: RoleInput): RolesAndDepartments
+        deleteRoleByRoleName(role: String): [RolesAndDepartments]
+        updateRoleByRoleName(role: String, departmentList: [String]): [RolesAndDepartments]
     }
 `;

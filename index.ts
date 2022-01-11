@@ -10,8 +10,12 @@ dotenv.config();
 const startServer = async () => {
     const app = express();
 
-    await mongoose.connect(process.env.DB_URI!);
-    console.log('Mongoose connected...');
+    try {
+        await mongoose.connect(process.env.DB_URI!);
+        console.log('Mongoose connected...');
+    } catch (e) {
+        console.log(e);
+    }
 
     const server = new ApolloServer({
         typeDefs,
